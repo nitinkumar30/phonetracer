@@ -19,6 +19,13 @@ logging.basicConfig(
 
 logger = logging.getLogger("PhoneTracer")
 
+def ascii_logo():
+    print(r"""
+         __        __        ___ ___  __        __   ___  __  
+        |__) |__| /  \ |\ | |__   |  |__)  /\  /  ` |__  |__) 
+        |    |  | \__/ | \| |___  |  |  \ /~~\ \__, |___ |  \ 
+    """)
+
 def spam_heuristic(number: str) -> int:
     score = 0
     if re.search(r"(\d)\1{4,}", number):
@@ -108,3 +115,4 @@ def format_output(data: dict) -> str:
             """
 
     return output.strip()
+
