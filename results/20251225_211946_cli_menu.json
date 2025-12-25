@@ -1,0 +1,15 @@
+[
+    {
+        "raw_input": "+919113797199",
+        "valid": true,
+        "possible": true,
+        "international": "+91 91137 97199",
+        "e164": "+919113797199",
+        "country": "India",
+        "carrier": "Reliance Jio",
+        "timezones": [
+            "Asia/Calcutta"
+        ],
+        "spam_score": 0
+    }
+]
