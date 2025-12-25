@@ -1,7 +1,8 @@
-from core import analyze_number, scan_text, export_json, format_output, save_results_always
+from core import analyze_number, scan_text, export_json, format_output, save_results_always, ascii_logo
 from pathlib import Path
 
 def run():
+    ascii_logo()
     print("\nPhoneTracer CLI Menu")
     print("1. Analyze single number")
     print("2. Scan file")
@@ -34,4 +35,5 @@ def run():
         filename = save_results_always(results, "cli_menu")
         print(format_output(results[0]))
         print(f"\nSaved to file: {filename}")
+
 
