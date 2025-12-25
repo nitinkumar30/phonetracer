@@ -10,10 +10,8 @@
 # PhoneTracer ⚡️  
 **OSINT Phone Number Metadata Toolkit**
 
-[![PyPI version](https://img.shields.io/pypi/v/phonetrcer.svg)](https://pypi.org/project/phonetrcer/)
-[![Python versions](https://img.shields.io/pypi/pyversions/phonetrcer.svg)](https://pypi.org/project/phonetrcer/)
-[![License](https://img.shields.io/github/license/yourusername/phonetrcer)](LICENSE)
-[![CI](https://github.com/yourusername/phonetrcer/actions/workflows/python-ci.yml/badge.svg)](https://github.com/yourusername/phonetrcer/actions)
+[![License](https://img.shields.io/github/license/nitinkumar30/phonetracer)](LICENSE)
+[![Github Actions](https://github.com/yourusername/phonetrcer/actions/workflows/python-ci.yml/badge.svg)](https://github.com/nitinkumar30/phonetracer/actions)
 
 PhoneTracer is a **modular Python OSINT toolkit** that extracts **public, non-invasive metadata**
 from phone numbers using Google’s `libphonenumber` (via `phonenumbers`).
@@ -233,4 +231,5 @@ If you find PhoneTracer useful:
 ---
 
 ### Built with ❤️ for ethical OSINT & Python automation
+
 
