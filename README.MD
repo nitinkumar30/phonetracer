@@ -1,7 +1,6 @@
- __        __        ___ ___  __        __   ___  __  
-|__) |__| /  \ |\ | |__   |  |__)  /\  /  ` |__  |__) 
-|    |  | \__/ | \| |___  |  |  \ /~~\ \__, |___ |  \ 
-
+╭─ PhoneTracer ─────────────────────╮
+│   OSINT Phone Metadata Toolkit    │
+╰──────────────────────────────────╯
 
 # PhoneTracer ⚡️  
 **OSINT Phone Number Metadata Toolkit**
@@ -227,6 +226,7 @@ If you find PhoneTracer useful:
 ---
 
 ### Built with ❤️ for ethical OSINT & Python automation
+
 
 
 
