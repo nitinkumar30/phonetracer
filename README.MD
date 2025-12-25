@@ -1,11 +1,24 @@
+
+██████╗ ██╗  ██╗ ██████╗ ███╗   ██╗███████╗████████╗██████╗  █████╗  ██████╗███████╗██████╗
+██╔══██╗██║  ██║██╔═══██╗████╗  ██║██╔════╝╚══██╔══╝██╔══██╗██╔══██╗██╔════╝██╔════╝██╔══██╗
+██████╔╝███████║██║   ██║██╔██╗ ██║█████╗     ██║   ██████╔╝███████║██║     █████╗  ██████╔╝
+██╔═══╝ ██╔══██║██║   ██║██║╚██╗██║██╔══╝     ██║   ██╔══██╗██╔══██║██║     ██╔══╝  ██╔══██╗
+██║     ██║  ██║╚██████╔╝██║ ╚████║███████╗   ██║   ██║  ██║██║  ██║╚██████╗███████╗██║  ██║
+╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚══════╝╚═╝  ╚═╝
+
+
 # PhoneTracer ⚡️  
-OSINT Phone Number Metadata Toolkit
+**OSINT Phone Number Metadata Toolkit**
 
-PhoneTracer is a modular Python toolkit for extracting **public,
-non-invasive metadata** from phone numbers using Google’s
-`libphonenumber` (via the `phonenumbers` library).
+[![PyPI version](https://img.shields.io/pypi/v/phonetrcer.svg)](https://pypi.org/project/phonetrcer/)
+[![Python versions](https://img.shields.io/pypi/pyversions/phonetrcer.svg)](https://pypi.org/project/phonetrcer/)
+[![License](https://img.shields.io/github/license/yourusername/phonetrcer)](LICENSE)
+[![CI](https://github.com/yourusername/phonetrcer/actions/workflows/python-ci.yml/badge.svg)](https://github.com/yourusername/phonetrcer/actions)
 
-> ❗ PhoneTracer does NOT track phones, reveal owners, or provide live locations.
+PhoneTracer is a **modular Python OSINT toolkit** that extracts **public, non-invasive metadata**
+from phone numbers using Google’s `libphonenumber` (via `phonenumbers`).
+
+> ❗ PhoneTracer **does NOT track phones**, reveal owners, intercept calls, or provide live locations.
 
 ---
 
@@ -17,57 +30,37 @@ non-invasive metadata** from phone numbers using Google’s
 - 🕒 Timezone detection
 - 🧠 Spam-style heuristic scoring
 - 📄 Scan numbers from text files
-- 📊 JSON export
+- 📊 Automatic JSON export on every run
 - 🖥 Argument-based CLI
 - 📟 Interactive command-line menu
 - 🪟 Desktop GUI (Tkinter)
-- 🧪 Built-in tests
+- 🧪 Built-in sanity tests
 - 🤖 GitHub Actions CI
 
 ---
 
-## 🧱 Project Architecture
+## 📦 Installation
 
-```
-
-phone_tracer/
-│
-├── main.py        # Mode selector (entry point)
-├── core.py        # Shared logic (analysis, logging, export)
-├── cli_args.py    # Argument-based CLI mode
-├── cli_menu.py    # Interactive command-line menu
-├── gui_app.py     # GUI (Tkinter)
-│
-├── tracer.log     # Runtime logs
-└── .github/
-    └── workflows/
-        └── python-ci.yml
-
-````
-
----
-
-## 🚀 Getting Started
-
-### Requirements
-- Python **3.7+**
-
-### Install dependency
 ```bash
-pip install phonenumbers
+pip install phonetrcer
 ````
+
+Dependencies are minimal:
+
+* Python **3.7+**
+* `phonenumbers`
 
 ---
 
-## ▶️ Usage
+## 🚀 Quick Start
 
-### Start PhoneTracer
+### Launch mode selector
 
 ```bash
 python main.py
 ```
 
-You will be prompted to choose:
+You can choose:
 
 ```
 1. Argument mode
@@ -77,63 +70,96 @@ You will be prompted to choose:
 
 ---
 
-### 🔹 Argument Mode
+## 🖥 Usage Modes
+
+### 🔹 Argument Mode (automation-friendly)
 
 ```bash
-python main.py
-# choose option 1
-```
-
-Then use:
-
-```bash
-python cli_args.py -n "+91 9513717169"
+python cli_args.py -n "+1 415 555 2671"
 python cli_args.py -f numbers.txt
 ```
 
+✔ Machine-readable
+✔ Always auto-saved
+
 ---
 
-### 🔹 Command-line Menu
+### 🔹 Interactive CLI Menu
 
 ```bash
-python main.py
-# choose option 2
+python cli_menu.py
 ```
 
-Interactive menu-driven interface.
+✔ Human-readable
+✔ Auto-saved after each run
 
 ---
 
 ### 🔹 GUI Mode
 
 ```bash
-python main.py
-# choose option 3
+python gui_app.py
 ```
 
-Simple desktop UI built with Tkinter.
+✔ Desktop UI
+✔ Clean formatted output
+✔ Auto-save enabled
 
 ---
 
-## 📂 Output
+## 📂 Output Files
 
-All scan results are exported as JSON files:
+Every run automatically generates a JSON file:
 
 ```
-YYYYMMDD_HHMMSS_<PHONE>.json
+YYYYMMDD_HHMMSS_<mode>.json
+```
+
+Example:
+
+```json
+{
+  "raw_input": "+91 9513717169",
+  "valid": true,
+  "possible": true,
+  "international": "+91 95137 17169",
+  "e164": "+919513717169",
+  "country": "India",
+  "carrier": "Airtel",
+  "timezones": ["Asia/Kolkata"],
+  "spam_score": 1
+}
 ```
 
 ---
 
-## 🧠 Spam Heuristics
+## 🧠 Spam Heuristics (Non-AI)
 
-PhoneTracer assigns a **spam score** based on simple patterns:
+PhoneTracer uses **transparent, rule-based heuristics**, such as:
 
 * Repeated digits
 * Excessive zeros
 * Abnormal formatting
 
-This is only an indicator, **not a classification**.
+> ⚠ This is **not a spam classifier**, only a signal.
+
+---
+
+## 🧱 Project Architecture
+
+```
+phonetrcer/
+│
+├── main.py        # Mode selector
+├── core.py        # Shared logic (analysis, export, logging)
+├── cli_args.py    # Argument-based CLI
+├── cli_menu.py    # Interactive CLI
+├── gui_app.py     # Tkinter GUI
+│
+└── .github/
+    └── workflows/
+        └── python-ci.yml
+```
 
 ---
 
@@ -142,10 +168,10 @@ This is only an indicator, **not a classification**.
 GitHub Actions automatically:
 
 * Installs dependencies
+* Validates imports
 * Runs core sanity tests
-* Ensures CLI paths load correctly
 
-Workflow file:
+Workflow:
 
 ```
 .github/workflows/python-ci.yml
@@ -155,21 +181,56 @@ Workflow file:
 
 ## 🔐 Privacy & Ethics
 
+PhoneTracer strictly follows ethical OSINT principles:
+
 * ❌ No phone tracking
 * ❌ No subscriber identification
-* ❌ No surveillance techniques
-* ✅ Metadata-only analysis
+* ❌ No surveillance or interception
+* ❌ No bypass of telecom systems
+* ✅ Public metadata only
 
-Use responsibly and legally.
+This makes the library **safe for PyPI distribution**.
+
+---
+
+## 🧪 Testing
+
+Built-in sanity tests:
+
+```bash
+python cli_args.py --test
+```
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Open a Pull Request
+
+Please keep changes **ethical, documented, and tested**.
 
 ---
 
 ## 📜 License
 
-MIT License
-Educational & research use is encouraged.
+MIT License © Your Name
 
 ---
 
-⭐ If you find this project useful, consider starring the repository!
+## ⭐ Support
+
+If you find PhoneTracer useful:
+
+* ⭐ Star the repository
+* 🐞 Report issues
+* 💡 Suggest features
+
+---
+
+### Built with ❤️ for ethical OSINT & Python automation
 
